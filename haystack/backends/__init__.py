@@ -743,8 +743,9 @@ class BaseSearchQuery(object):
         cleaned_words = []
 
         for word in words:
-            if word in self.backend.RESERVED_WORDS:
-                word = word.replace(word, word.lower())
+            # patching for https://github.com/toastdriven/django-haystack/issues/572
+            #if word in self.backend.RESERVED_WORDS:
+            #    word = word.replace(word, word.lower())
 
             for char in self.backend.RESERVED_CHARACTERS:
                 word = word.replace(char, '\\%s' % char)
