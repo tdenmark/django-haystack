@@ -442,7 +442,7 @@ class ElasticsearchSearchBackend(BaseSearchBackend):
             lng, lat = dwithin['point'].get_coords()
             dwithin_filter = {
                 "geo_distance": {
-                    "distance": str(dwithin['distance'].km) + 'km',
+                    "distance": dwithin['distance'].km,
                     dwithin['field']: {
                         "lat": lat,
                         "lon": lng
